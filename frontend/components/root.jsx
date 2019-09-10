@@ -7,7 +7,7 @@ class Root extends React.Component {
 
     render() {
         return (
-            <div>React is Up</div>
+            <div>The Waves keep on rollin</div>
         )
     }
 }
