@@ -5,7 +5,6 @@
 #  id              :bigint           not null, primary key
 #  username        :string           not null
 #  email           :string           not null
-#  age             :integer          not null
 #  session_token   :string           not null
 #  password_digest :string           not null
 #  created_at      :datetime         not null
@@ -13,7 +12,7 @@
 #
 
 class User < ApplicationRecord
-    validates :username, :email, :age, :password_digest, :session_token, presence: true
+    validates :username, :email, :password_digest, :session_token, presence: true
     validates :username, :email, :session_token, uniqueness: true
     validates :password, length: { minimum: 6, allow_nil: true }
 
