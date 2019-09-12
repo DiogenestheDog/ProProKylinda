@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class SessionForm extends React.Component {
@@ -63,9 +63,12 @@ class SessionForm extends React.Component {
         <div>
             <h1>I hope to be a rainbow someday</h1>
             <h2>{formType}!</h2>
-            {/* <Link to={`${formType}`} >honk</Link> */}
+            <Link to={formType === "login" ? "signup" : "login"} >
+                {formType === "login" ? "Sign Up" : "Log In"}
+                </Link>
 
             {this.renderErrors()}
+            
             <form onSubmit={this.handleSubmit}>
             <label >Email
                 <input type="text"
@@ -80,7 +83,7 @@ class SessionForm extends React.Component {
                 />
             </label>
             {formType === 'signup' ? this.askForUsername() : `${formType}` }
-            <button type="submit" >{`${formType}`}</button>
+            <button type="submit" >{`Enter`}</button>
         </form>
         </div>)
     }

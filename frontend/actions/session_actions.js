@@ -33,6 +33,6 @@ export const login = user => dispatch => {
 
 export const logout = () => dispatch => {
     SessionUtils.logout()
-        .then( () => dispatch(logout),
+        .then( () => dispatch(logoutCurrentUser()),
             errors => dispatch(receiveErrors(errors.responseJSON)));
 };
