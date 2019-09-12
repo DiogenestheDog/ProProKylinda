@@ -20,6 +20,11 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
+        this.setState({
+            email: "",
+            password: "",
+            username: ""
+        });
     }
 
     update(type) {
@@ -29,10 +34,12 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
+
+        
         return (
             <ul>
-                {this.props.errors ? this.props.errors.map(error => (
-                    <li>error</li>
+                {this.props.errors ? this.props.errors.map( (error, i) => (
+                    <li key={`key-${i}`}>{error}</li>
                     )
                 ) : ""}
             </ul>
@@ -57,6 +64,7 @@ class SessionForm extends React.Component {
             <h1>I hope to be a rainbow someday</h1>
             <h2>{formType}!</h2>
             {/* <Link to={`${formType}`} >honk</Link> */}
+
             {this.renderErrors()}
             <form onSubmit={this.handleSubmit}>
             <label >Email
