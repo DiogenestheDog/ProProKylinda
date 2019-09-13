@@ -4,21 +4,10 @@ class Splash extends React.Component {
     constructor(props) {
         super(props)
 
-        this.getOut = this.getOut.bind(this);
-
     }
-    
-    getOut(e) {
-        e.preventDefault();
-        this.props.logout();
-    }
-
-
     render() {
-        return (<div>
-            <button onClick={this.getOut}>Log Out</button>
-            <marquee>You did it! You're in!</marquee>
-
+        return (<div className="post-container">
+            <h1 className="post-bar">Posts will go here</h1>
         </div>)
     }
 }
