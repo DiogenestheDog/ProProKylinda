@@ -4,6 +4,23 @@
     font-family: 'Lucida Grande Lucida Sans Unicode sans-serif';
 }
 
+nav {
+    position: fixed;
+    border: 0.05em solid blue;
+    width: 100%;
+    top: 0px;
+}
+
+.session-form {
+    max-width: 200px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    left: 50%;
+    top: 50%;
+}
+
 .becoming-rainbow {
     animation: pulse 1s infinite;
 

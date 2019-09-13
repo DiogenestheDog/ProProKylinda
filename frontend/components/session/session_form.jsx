@@ -34,8 +34,6 @@ class SessionForm extends React.Component {
     }
 
     renderErrors() {
-
-        
         return (
             <ul>
                 {this.props.errors ? this.props.errors.map( (error, i) => (
@@ -48,9 +46,10 @@ class SessionForm extends React.Component {
 
     askForUsername() {
         return (
-            <label>Username
+            <label>
                 <input type="text"
                     value={this.state.username}
+                    placeholder="Username"
                     onChange={this.update('username')}         
                 />
             </label>
@@ -60,29 +59,30 @@ class SessionForm extends React.Component {
     render() {
         const { formType, errors } = this.props;
         return (
-        <div>
-            <h1>I hope to be a rainbow someday</h1>
-            <h2>{formType}!</h2>
+        <div className="session-form">
+            <h1>ProProKylinda</h1>
+            
             <Link to={formType === "login" ? "signup" : "login"} >
                 {formType === "login" ? "Sign Up" : "Log In"}
-                </Link>
-
+            </Link>
             {this.renderErrors()}
             
             <form onSubmit={this.handleSubmit}>
-            <label >Email
+            <label>
                 <input type="text"
                     value={this.state.email}
+                    placeholder="Email"
                     onChange={this.update('email')}
                 />
             </label>
-            <label >Password
+            <label>
                 <input type="password"
                     value={this.state.password}
+                    placeholder="Password"
                     onChange={this.update('password')}
                 />
             </label>
-            {formType === 'signup' ? this.askForUsername() : `${formType}` }
+            {formType === 'signup' ? this.askForUsername() : "" }
             <button type="submit" >{`Enter`}</button>
         </form>
         </div>)

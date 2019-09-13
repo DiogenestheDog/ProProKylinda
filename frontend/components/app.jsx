@@ -10,9 +10,6 @@ import NavBar from './nav_bar/nav_bar';
 const App = () => (
     <div>
         <NavBar />
-        <header>
-            <h1>I'm just tossing and turning</h1>
-        </header>
         <Switch>
             <AuthRoute exact path="/login" component={LoginContainer} />
             <AuthRoute exact path="/signup" component={SignupContainer} />
