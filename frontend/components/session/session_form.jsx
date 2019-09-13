@@ -83,7 +83,7 @@ class SessionForm extends React.Component {
                 />
             </label>
             {formType === 'signup' ? this.askForUsername() : "" }
-            <button type="submit" >{`Enter`}</button>
+            <button className="login" type="submit" >{`Enter`}</button>
         </form>
         </div>)
     }
