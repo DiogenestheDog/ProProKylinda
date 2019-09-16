@@ -1,67 +1,53 @@
  $main-color: #001935;
- 
+ $text-color: white;
+
  html {
-    background-image: image-url('mountain_lake');
-    background-size: 100% auto;
     font-family: 'Lucida Grande Lucida Sans Unicode sans-serif';
+    color: $text-color;
 }
 
-.logged-in {
-    background-color: $main-color;
-}
-
-nav {
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    border: 0.05em solid blue;
-    width: 100%;
-    top: 0px;
-}
-
-.right-nav {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.session-form {
-    max-width: 200px;
+form {
     position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    left: 50%;
-    top: 50%;
 }
 
-.login {
-    border-radius: 0%;
+.flat-button {   
+    border: 0;
+    box-shadow: none;
+    border-radius: 3px;
 }
 
-.becoming-rainbow {
-    animation: pulse 1s infinite;
+.flat-input {
+    border: none;
+    box-shadow: none;
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
 
-    @keyframes pulse {
-        0% { color: red; }
-        12.5% { color: orange; }
-        25% { color: yellow; }
-        38% { color: green; }
-        50% { color: turquoise;}
-        63% { color: blue; }
-        75% { color: indigo; }
-        87% { color: magenta; }
-        100% { color: crimson; }
+input::placeholder {
+    color: #8f8f8f
+}
+
+.sliding-from-right {
+
+    animation: sfr 0.2s 1;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    @keyframes sfr {
+        0% {
+            transform: scaleX(0);
+            transform-origin: 100% 100%;
+        }
+
+        100% {
+            transform: scaleX(1);
+            transform-origin: 100% 100%;
+        }
     }
 }
 
-.post-container {
-    box-sizing: border-box;
-    background-color: $main-color;
-    padding-top: 100px;
-    align-content: center;
-    text-align: center;
-}
-
-.post-bar {
-    color: lightgreen;
-}
 // mountain lake => Garrett Parker http://garrettparker.co/
+// snail Photo by Krzysztof Niewolny on Unsplash

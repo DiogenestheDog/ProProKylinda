@@ -17,13 +17,13 @@ class NavBar extends React.Component {
 
     render() {
         const { loggedIn } = this.props;
-        return (<nav className={loggedIn ? "logged-in" : ""}>
+        return (<nav className={loggedIn ? "logged-in top-nav" : "top-nav"}>
             <div className="left-nav">
-                <h1 className="becoming-rainbow">[ p ]</h1>
+                <h1 className="rainbow-letter">[ p ]</h1>
             </div>
             <div className="right-nav"> 
-                <button className="logout-button" onClick={this.getOut}>
-                    {loggedIn ? "Log Out" : "Honk"}
+                <button className="logout-button flat-button" onClick={this.getOut}>
+                    {loggedIn ? "Log Out" : "Sign In"}
                     </button>
             </div>
         </nav>);

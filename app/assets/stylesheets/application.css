@@ -10,7 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require normalize.css
- *= require frontend.css
+ *= require frontend.scss
+ *= require posts.scss
+ *= require top_nav.scss
+ *= require session.scss
  *= require_tree .
  *= require_self
  */

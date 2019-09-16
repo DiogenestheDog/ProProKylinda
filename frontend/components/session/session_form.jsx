@@ -8,9 +8,9 @@ class SessionForm extends React.Component {
         super(props)
 
         this.state = {
-            username: "",
-            email: "",
-            password: ""
+                username: "",
+                email: "",
+                password: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
-        this.setState({
+        this.setState({ 
             email: "",
             password: "",
             username: ""
@@ -48,9 +48,10 @@ class SessionForm extends React.Component {
         return (
             <label>
                 <input type="text"
-                    value={this.state.username}
+                    value={this.state.user.username}
                     placeholder="Username"
-                    onChange={this.update('username')}         
+                    onChange={this.update('username')}
+                    className="flat-input"
                 />
             </label>
         );
@@ -58,33 +59,40 @@ class SessionForm extends React.Component {
 
     render() {
         const { formType, errors } = this.props;
+        let { username, email, password } = this.state;
         return (
-        <div className="session-form">
-            <h1>ProProKylinda</h1>
-            
-            <Link to={formType === "login" ? "signup" : "login"} >
-                {formType === "login" ? "Sign Up" : "Log In"}
-            </Link>
-            {this.renderErrors()}
-            
-            <form onSubmit={this.handleSubmit}>
-            <label>
-                <input type="text"
-                    value={this.state.email}
-                    placeholder="Email"
-                    onChange={this.update('email')}
-                />
-            </label>
-            <label>
-                <input type="password"
-                    value={this.state.password}
-                    placeholder="Password"
-                    onChange={this.update('password')}
-                />
-            </label>
-            {formType === 'signup' ? this.askForUsername() : "" }
-            <button className="login" type="submit" >{`Enter`}</button>
-        </form>
+        <div className="session-container">
+            <div className="session-form">
+                <div className="title-container">
+                    <h1 className="title-text">Warbler</h1>
+                </div>
+                <div className="form-container">
+                    {this.renderErrors()}
+                    
+                    <form onSubmit={this.handleSubmit}>
+                    <label>
+                        <input type="text"
+                            value={email}
+                            placeholder="Email"
+                            onChange={this.update('email')}
+                            className="flat-input sliding-from-right"
+                        />
+                    </label>
+                    <label>
+                        <input type="password"
+                            value={password}
+                            placeholder="Password"
+                            onChange={this.update('password')}
+                            className="flat-input email-input sliding-from-right"
+                        />
+                    </label>
+                    {formType === 'signup' ? this.askForUsername() : "" }
+                            <button onClick={this.buttonHandler} className="login flat-button" type="submit" >
+                                {formType === "login" ? "Log In" : "Sign Up"}
+                            </button>
+                    </form>
+                </div>
+            </div>
         </div>)
     }
 }

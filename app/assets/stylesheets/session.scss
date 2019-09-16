@@ -1,0 +1,54 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+$session-form-width: 200px;
+
+.session-container {
+    background-image: image-url('mountain_lake');
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   // max-width: 400px;
+    min-height: 100vh;
+    background-size: 100% auto;
+}
+
+.title-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    background-color: #00b8ff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    width: 250px;
+    margin-top: 8px;
+    color: white;
+}
+
+.email-input {
+    border-top: 1px solid lightgrey;
+}
+
+.title-text {
+    text-align: center;
+    font-size: 3.6em;
+}

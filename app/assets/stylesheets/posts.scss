@@ -1,0 +1,51 @@
+$main-color: #001935;
+
+.post-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: $main-color;
+    padding-top: 100px;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    min-height: 100vw;
+
+    img {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+.post-buttons {
+    //position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 6.25em;
+    width: 18.75em;
+    background-color: green;
+
+}
+
+.md48 {
+    font-size: 48px;
+}
+
+.post-button {
+    width: 25%;
+    border: 1px solid grey;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-items: center;
+
+    i {
+        font-size: 48px;
+    }
+}
+
+.post-bar {
+    color: lightgreen;
+}
