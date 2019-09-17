@@ -5,14 +5,36 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.getOut = this.getOut.bind(this);
     }
 
     getOut(e) {
         e.preventDefault();
-        console.log(this.props)
         this.props.logout();
+    }
+
+    toSignup() { history.push('/signup'); }
+
+    navButton() {
+        const login = (
+            <Link to="/login">
+                <div className="flat-button">Log In</div>
+            </Link>
+        );
+
+        const logout = (
+            <Link to="/login">
+                <div className="flat-button">Log Out</div>
+            </Link>
+        );
+
+        const signup = (
+            <Link to="/signup">
+                <div className="flat-button">Sign Up</div>
+            </Link>
+        );
+
+        return this.props.loggedIn ? logout : this.props.path === "/signup" ? login : signup;
     }
 
     render() {
@@ -22,9 +44,7 @@ class NavBar extends React.Component {
                 <h1 className="rainbow-letter">[ p ]</h1>
             </div>
             <div className="right-nav"> 
-                <button className="logout-button flat-button" onClick={this.getOut}>
-                    {loggedIn ? "Log Out" : "Sign In"}
-                    </button>
+                {this.navButton()}
             </div>
         </nav>);
     }

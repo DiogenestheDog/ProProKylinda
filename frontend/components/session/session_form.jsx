@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
 
     renderErrors() {
         return (
-            <ul>
+            <ul className="error-list">
                 {this.props.errors ? this.props.errors.map( (error, i) => (
                     <li key={`key-${i}`}>{error}</li>
                     )
@@ -48,7 +48,7 @@ class SessionForm extends React.Component {
         return (
             <label>
                 <input type="text"
-                    value={this.state.user.username}
+                    value={this.state.username}
                     placeholder="Username"
                     onChange={this.update('username')}
                     className="flat-input"
@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
                     <h1 className="title-text">Warbler</h1>
                 </div>
                 <div className="form-container">
-                    {this.renderErrors()}
+                   {this.renderErrors()}
                     
                     <form onSubmit={this.handleSubmit}>
                     <label>

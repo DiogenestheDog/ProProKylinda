@@ -28,10 +28,7 @@ $session-form-width: 200px;
 
 .form-container {
     margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
 .login {
@@ -51,4 +48,11 @@ $session-form-width: 200px;
 .title-text {
     text-align: center;
     font-size: 3.6em;
+}
+
+.error-list {
+    //height: 100px;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
 }
