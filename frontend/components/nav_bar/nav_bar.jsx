@@ -23,9 +23,7 @@ class NavBar extends React.Component {
         );
 
         const logout = (
-            <Link to="/login">
-                <div className="flat-button">Log Out</div>
-            </Link>
+                <div onClick={this.getOut} className="flat-button">Log Out</div>
         );
 
         const signup = (

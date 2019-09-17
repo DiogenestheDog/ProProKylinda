@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import * as APIUtils from './util/session_api_utils';
 import configureStore from './store/store';
+import * as PostUtils from './util/post.util';
+import { getPost, createPost } from './actions/post_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -32,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.logout = APIUtils.logout
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+    window.fetchPost = PostUtils.fetchPost;
+    window.getPost = getPost;
+    window.createPost = createPost;
 
     ReactDOM.render(<Root store={store} />, root);
 });
