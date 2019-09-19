@@ -11,12 +11,15 @@ class Splash extends React.Component {
             photoUrl: "",
             buttonClicked: false,
             postHeader: "",
-            postBody: ""
+            postBody: "",
+            imageUrl: "",
+            imageFile: null
         };
         this.previewNewAvatar = this.previewNewAvatar.bind(this);
-        this.updateAvatar = this.updateAvatar.bind(this);
+       // this.updateAvatar = this.updateAvatar.bind(this);
         this.revealPostForm = this.revealPostForm.bind(this);
         this.dispatchPost = this.dispatchPost.bind(this);
+        this.imageReader = this.imageReader.bind(this);
     }
 
     previewNewAvatar(e) {
@@ -44,33 +47,59 @@ class Splash extends React.Component {
         });
     }
 
-    updateAvatar(e) {
-        let formData = new FormData();
-        formData.append('user[username]', this.props.user.username);
-        formData.append('user[id]', this.props.id)
-        if (this.state.photoFile) {
-            formData.append('user[avatar]', this.state.photoFile);
-        }
+    // updateAvatar(e) {
+    //     let formData = new FormData();
+    //     formData.append('user[username]', this.props.user.username);
+    //     formData.append('user[id]', this.props.id)
+    //     if (this.state.photoFile) {
+    //         formData.append('user[avatar]', this.state.photoFile);
+    //     }
     
-        this.props.changeUser(formData);
+    //     this.props.changeUser(formData);
 
-    }
+    // }
 
     dispatchPost(e) {
         e.preventDefault();
-        const { header, body } = this.state;
+        
+        const { header, body, imageFile } = this.state;
         const user_id = this.props.user.id;
-        const post = {
-            header,
-            body,
-            user_id,
-            post_type: "text"
-        };
-        this.props.createPost(post);
+        let formData = new FormData();
+
+        formData.append('post[header]', header ? header : null);
+        formData.append('post[body]', body ? body : null);
+        formData.append('post[user_id]', user_id ? user_id : null);
+        formData.append('post[post_type]', "text");
+        formData.append('post[image]', imageFile);
+
+        console.log(formData);
+        // const post = {
+        //     header,
+        //     body,
+        //     user_id,
+        //     image: imageFile,
+        //     post_type: "text"
+        // };
+
+        this.props.createPost(formData);
         this.setState({
             header: "",
-            body: ""
+            body: "",
+            imageUrl: "",
+            imageFile: null
         });
+    }
+
+    imageReader(e) {
+        const reader = new FileReader
+        const file = e.currentTarget.files[0];
+        reader.onloadend = () => this.setState({ imageUrl: reader.result, imageFile: file });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            this.setState({ imageUrl: "", imageFile: null });
+        }
     }
 
     update(type) {
@@ -115,7 +144,9 @@ class Splash extends React.Component {
                     <form className="post-form">
                         <input type="text" onChange={this.update('header')} placeholder="header" />
                         <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" />
+                        <input type="file" onChange={this.imageReader} />
                         <button onClick={this.dispatchPost} type="submit">Do it</button>
+                        {this.state.imageUrl ? (<img src={this.state.imageUrl} className="image-preview" />) : ""}
                     </form>
                 </div>
             </div>
