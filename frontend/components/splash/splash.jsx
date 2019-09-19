@@ -17,7 +17,7 @@ class Splash extends React.Component {
         };
         this.previewNewAvatar = this.previewNewAvatar.bind(this);
        // this.updateAvatar = this.updateAvatar.bind(this);
-        this.revealPostForm = this.revealPostForm.bind(this);
+        this.togglePostForm = this.togglePostForm.bind(this);
         this.dispatchPost = this.dispatchPost.bind(this);
         this.imageReader = this.imageReader.bind(this);
     }
@@ -39,12 +39,14 @@ class Splash extends React.Component {
 
     }
 
-    revealPostForm(e) {
+    togglePostForm(e) {
         e.preventDefault();
-        let veracity = this.buttonClicked === false ? true : false;
+   //     let veracity = ;
         this.setState({
-            buttonClicked: veracity
+            buttonClicked: this.state.buttonClicked === false ? true : false
         });
+        console.log(this.state.buttonClicked);
+       // console.log(veracity);
     }
 
     // updateAvatar(e) {
@@ -71,15 +73,6 @@ class Splash extends React.Component {
         formData.append('post[user_id]', user_id ? user_id : null);
         formData.append('post[post_type]', "text");
         formData.append('post[image]', imageFile);
-
-        console.log(formData);
-        // const post = {
-        //     header,
-        //     body,
-        //     user_id,
-        //     image: imageFile,
-        //     post_type: "text"
-        // };
 
         this.props.createPost(formData);
         this.setState({
@@ -116,7 +109,7 @@ class Splash extends React.Component {
     render() {
         console.log(this.state.buttonClicked);
         const { username, avatarUrl } = this.props.user;
-        // console.log(revealPostForm);
+        // console.log(togglePostForm);
         window.user = this.props.user;
         window.state = this.state;
         window.props = this.props;
@@ -125,22 +118,23 @@ class Splash extends React.Component {
             <h1>Home of {username}</h1>
             <img className="user-avatar" src={photoUrl ? photoUrl : avatarUrl} />
             <div className="post-buttons">
-                <div className="post-button text-post" onClick={this.revealPostForm} >
+                <div className="post-button text-post" onClick={this.togglePostForm} >
                     <i className="material-icons md-48">text_fields</i>
                     <div>Text</div></div>
-                <div className="post-button photo-post" onClick={this.revealPostForm} >
+                <div className="post-button photo-post" onClick={this.togglePostForm} >
                     <i className="material-icons md-48">camera_alt</i>
                     <div>Photo</div></div>
-                <div className="post-button quote-post" onClick={this.revealPostForm} >
+                <div className="post-button quote-post" onClick={this.togglePostForm} >
                     <i className="material-icons md-48">format_quote</i>
                     <div>Quote</div>
                 </div>
-                <div className="post-button chat-post" onClick={this.revealPostForm} >
+                <div className="post-button chat-post" onClick={this.togglePostForm} >
                     <i className="material-icons md-48">mood</i>
                     <div>Chat</div>
                 </div>
-                <div className={this.buttonClicked ? "post-form-container" :  "post-form-container-revealed"}>
-                    <h2>Let's Post</h2>
+                {this.buttonClicked ? this.togglePostForm() : ""}
+                <div className={this.state.buttonClicked ? "post-form-container-revealed scale-in-top" : "post-form-container"}>
+                    <h4 className="pf-username">{username}</h4>
                     <form className="post-form">
                         <input type="text" onChange={this.update('header')} placeholder="header" />
                         <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" />

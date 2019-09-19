@@ -45,7 +45,8 @@ $main-color: #001935;
 
 .post-form-container {
     position: absolute;
-    background-color: lightgrey;
+    background-color: white;
+    color: black;
     width: 20em;
     height: 300px;
     display: none;
@@ -53,11 +54,25 @@ $main-color: #001935;
 
 .post-form-container-revealed {
     position: absolute;
-    background-color: lightgrey;
-    width: 20em;
+    background-color: white;
+    //width: 20em;
+    width: 31.25em;
+    max-width: 31.25em;
     height: 300px;
     display: block;
+    color: black;
+    border-radius: 4px;
+    text-align: left;
 }
+
+.image-preview {
+    width: 100%;
+    height: auto;
+}
+
+// .pf-username {
+    
+// }
 
 .post-button {
     width: 25%;
