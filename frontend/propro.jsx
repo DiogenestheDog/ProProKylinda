@@ -5,7 +5,9 @@ import Root from './components/root';
 import * as APIUtils from './util/session_api_utils';
 import configureStore from './store/store';
 import * as PostUtils from './util/post.util';
-import { getPost, createPost } from './actions/post_actions';
+import * as UserUtils from './util/user_util';
+import { getPost, createPost, getAllPosts } from './actions/post_actions';
+import { getAllUsers } from './actions/user_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -37,6 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.fetchPost = PostUtils.fetchPost;
     window.getPost = getPost;
     window.createPost = createPost;
+    window.getAllPosts = getAllPosts;
+    window.getAllUsers = getAllUsers;
+    window.fetchAllUsers = UserUtils.fetchAllUsers
 
     ReactDOM.render(<Root store={store} />, root);
 });

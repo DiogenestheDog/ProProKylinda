@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PostIndexContainer from '../posts/post_index_container';
+
 class Splash extends React.Component {
     constructor(props) {
         super(props)
@@ -36,9 +38,14 @@ class Splash extends React.Component {
         if (this.state.photoFile) {
             formData.append('user[avatar]', this.state.photoFile);
         }
-        debugger;
+    
         this.props.changeUser(formData);
 
+    }
+
+    componentDidMount() {
+        this.props.getAllUsers();
+        this.props.getAllPosts();
     }
 
     render() {
@@ -66,11 +73,11 @@ class Splash extends React.Component {
                     <div>Chat</div>
                 </div>
             </div>
-            {/* <form className="upload-avatar" onSubmit={this.updateAvatar}>
-                <input type="file" onChange={this.previewNewAvatar} />
-                <button type="submit">Upload Avatar</button>
-            </form> */}
-            <h2 className="post-bar">Posts will go here</h2>
+            <div className="grid-feed">
+                
+                <PostIndexContainer />
+          
+            </div>
         </div>)
     }
 }
