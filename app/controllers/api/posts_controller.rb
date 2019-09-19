@@ -7,6 +7,7 @@ class Api::PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         if @post.save
+            @posts = Post.all
             render "api/posts/index"
         else
             render json: @post.errors.full_messages, status: 422

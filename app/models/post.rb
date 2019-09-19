@@ -16,7 +16,7 @@ class Post < ApplicationRecord
     validates :post_type, inclusion: { in: %w(text chat quote photo) }
         # message: "%{value} is not a valid post-type" }
 
-    has_many_attached :images
+    has_one_attached :image
 
     belongs_to :user
 end

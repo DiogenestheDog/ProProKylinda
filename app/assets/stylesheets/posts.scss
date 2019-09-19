@@ -12,10 +12,6 @@ $main-color: #001935;
     text-align: center;
     min-height: 100vw;
 
-    img {
-        height: 100px;
-        width: 100px;
-    }
 }
 
 .posts-column {
@@ -32,14 +28,35 @@ $main-color: #001935;
     border-radius: 3px;
 }
 
+.post-img {
+    width: 100%;
+    height: auto;
+}
+
 .post-buttons {
-    //position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: row;
     height: 6.25em;
     width: 20em;
     margin: 0 auto;
+}
+
+.post-form-container {
+    position: absolute;
+    background-color: lightgrey;
+    width: 20em;
+    height: 300px;
+    display: none;
+}
+
+.post-form-container-revealed {
+    position: absolute;
+    background-color: lightgrey;
+    width: 20em;
+    height: 300px;
+    display: block;
 }
 
 .post-button {
