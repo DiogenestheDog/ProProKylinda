@@ -13,7 +13,7 @@ class NavBar extends React.Component {
         this.props.logout();
     }
 
-    toSignup() { history.push('/signup'); }
+    // toSignup() { history.push('/signup'); }
 
     navButton() {
         const login = (
