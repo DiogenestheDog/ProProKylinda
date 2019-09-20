@@ -41,7 +41,7 @@ ActiveRecord::Base.transaction do
             the_post.image.attach(io: file, filename: "file_#{i}")
         end
     end
-    # ryan = User.create({:username => "ryan", :password => "password", :email => "ryan"})
-    # file = open('https://proprokylinda-dev.s3-us-west-1.amazonaws.com/phantasia_cover.jpeg')
-    # ryan.avatar.attach(io: file, filename: 'ryan_avatar.jpeg')
+    ryan = User.create({:username => "ryan", :password => "password", :email => "ryan"})
+    file = open('https://proprokylinda-dev.s3-us-west-1.amazonaws.com/phantasia_cover.jpeg')
+    ryan.avatar.attach(io: file, filename: 'ryan_avatar.jpeg')
 end

@@ -27,6 +27,11 @@ input::placeholder {
     color: #8f8f8f
 }
 
+input {
+        box-shadow: none;
+        border: none;
+}
+
 .sliding-from-right {
 
     animation: sfr 0.4s 1;

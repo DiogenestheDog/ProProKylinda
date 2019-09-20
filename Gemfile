@@ -15,6 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
+gem 'faker'
 
 gem 'aws-sdk-s3'
 # Use CoffeeScript for .coffee assets and views
@@ -53,7 +54,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'pry-rails'
-  gem 'faker'
 end
 
 group :test do
