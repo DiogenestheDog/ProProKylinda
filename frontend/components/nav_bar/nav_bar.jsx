@@ -18,17 +18,17 @@ class NavBar extends React.Component {
     navButton() {
         const login = (
             <Link to="/login">
-                <div className="flat-button">Log In</div>
+                <div className="flat-button logout-button">Log In</div>
             </Link>
         );
 
         const logout = (
-                <div onClick={this.getOut} className="flat-button">Log Out</div>
+                <div onClick={this.getOut} className="flat-button logout-button">Log Out</div>
         );
 
         const signup = (
             <Link to="/signup">
-                <div className="flat-button">Sign Up</div>
+                <div className="flat-button logout-button">Sign Up</div>
             </Link>
         );
 

@@ -20,6 +20,7 @@ class Splash extends React.Component {
         this.togglePostForm = this.togglePostForm.bind(this);
         this.dispatchPost = this.dispatchPost.bind(this);
         this.imageReader = this.imageReader.bind(this);
+        this.chooseFile = this.chooseFile.bind(this);
     }
 
     previewNewAvatar(e) {
@@ -83,6 +84,13 @@ class Splash extends React.Component {
         });
     }
 
+
+    chooseFile(e) {
+        e.preventDefault();
+        $("#file-input").click();
+        console.log("honk");
+    }
+ 
     imageReader(e) {
         const reader = new FileReader
         const file = e.currentTarget.files[0];
@@ -119,17 +127,17 @@ class Splash extends React.Component {
             <img className="user-avatar" src={photoUrl ? photoUrl : avatarUrl} />
             <div className="post-buttons">
                 <div className="post-button text-post" onClick={this.togglePostForm} >
-                    <i className="material-icons md-48">text_fields</i>
+                    <i className="material-icons">text_fields</i>
                     <div>Text</div></div>
                 <div className="post-button photo-post" onClick={this.togglePostForm} >
-                    <i className="material-icons md-48">camera_alt</i>
+                    <i className="material-icons">camera_alt</i>
                     <div>Photo</div></div>
                 <div className="post-button quote-post" onClick={this.togglePostForm} >
-                    <i className="material-icons md-48">format_quote</i>
+                    <i className="material-icons">format_quote</i>
                     <div>Quote</div>
                 </div>
                 <div className="post-button chat-post" onClick={this.togglePostForm} >
-                    <i className="material-icons md-48">mood</i>
+                    <i className="material-icons">mood</i>
                     <div>Chat</div>
                 </div>
                 {this.buttonClicked ? this.togglePostForm() : ""}
@@ -137,18 +145,20 @@ class Splash extends React.Component {
                     <h4 className="pf-username">{username}</h4>
                     <form className="post-form">
                         <input type="text" className="post-header" onChange={this.update('header')} placeholder="header" />
-                        <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" />
-                        <input type="file" onChange={this.imageReader} />
-                        <button onClick={this.dispatchPost} type="submit">Do it</button>
+                        {/* <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" /> */}
+                        <textarea className="post-body" type="text" onChange={this.update('body')} placeholder="Watcha thinking about?" />
                         {this.state.imageUrl ? (<img src={this.state.imageUrl} className="image-preview" />) : ""}
+                        <div className="file-input-wrapper">
+                            <input id="file-input" type="file" onChange={this.imageReader} />
+                        </div>
+                        <i className="material-icons" id="photo-upload-button" onClick={this.chooseFile} >photo_camera</i>
+                        <button onClick={this.dispatchPost} type="submit">Do it</button>
                     </form>
                 </div>
             </div>
            
-            <div className="grid-feed">
-                
-                <PostIndexContainer />
-          
+            <div className="grid-feed">         
+                <PostIndexContainer /> 
             </div>
         </div>)
     }

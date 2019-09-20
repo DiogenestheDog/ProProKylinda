@@ -12,6 +12,9 @@ $main-color: #001935;
     text-align: center;
     min-height: 100vw;
 
+    i {
+        cursor: pointer
+    }
 }
 
 .posts-column {
@@ -26,6 +29,18 @@ $main-color: #001935;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 3px;
+    text-align: left;
+}
+
+.post-item-avatar {
+    max-height: 2.0em;
+}
+
+.post-item-username {
+    padding-left: 8px;
+    font-size: 1.3em;
+    vertical-align: top;
+    display: inline-block;
 }
 
 .post-img {
@@ -63,6 +78,7 @@ $main-color: #001935;
     color: black;
     border-radius: 4px;
     text-align: left;
+    border: 1px solid grey;
 
     input {
         display: block;
@@ -70,7 +86,19 @@ $main-color: #001935;
 }
 
 .post-header {
-    height: 3em;
+    font-size: 2em;
+}
+
+.post-body {
+    margin-top: 10px;
+    resize: none;
+    border: none;
+    width: 95%;
+}
+
+#photo-upload-button {
+    display: block;
+    font-size: 48px;
 }
 
 .image-preview {
@@ -80,6 +108,11 @@ $main-color: #001935;
 
 .pf-username {
     padding-left: 0.4em
+}
+
+.file-input-wrapper {
+    height: 0;
+    overflow: hidden;
 }
 
 .post-button {

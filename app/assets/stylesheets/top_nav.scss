@@ -8,6 +8,10 @@
     width: 100%;
     top: 0px;
     z-index: 2;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .logged-in {
@@ -17,10 +21,13 @@
 
 .logout-button {
     max-height: 50%;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    // padding-top: 4px;
+    // padding-bottom: 4px;
     color: black;
     background-color: white;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .right-nav {
@@ -53,6 +60,10 @@
         87% { color: magenta; }
         100% { color: crimson; }
     }
+}
+
+.rainbow-letter {
+    cursor: image-url('unicorn-face'), wait;
 }
 
 .rainbow-letter:hover { @include becoming-rainbow(); }
