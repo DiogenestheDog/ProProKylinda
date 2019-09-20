@@ -63,6 +63,14 @@ $main-color: #001935;
     color: black;
     border-radius: 4px;
     text-align: left;
+
+    input {
+        display: block;
+    }
+}
+
+.post-header {
+    height: 3em;
 }
 
 .image-preview {

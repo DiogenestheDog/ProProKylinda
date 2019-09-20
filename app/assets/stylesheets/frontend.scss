@@ -4,6 +4,11 @@
  html {
     font-family: 'Lucida Grande Lucida Sans Unicode sans-serif';
     color: $text-color;
+    cursor: image-url('unicorn-face'), wait;
+}
+
+.custom-cursor {
+        cursor: image-url('unicorn-face')
 }
 
 .flat-button {   

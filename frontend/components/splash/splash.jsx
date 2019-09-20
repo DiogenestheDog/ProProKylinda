@@ -136,7 +136,7 @@ class Splash extends React.Component {
                 <div className={this.state.buttonClicked ? "post-form-container-revealed scale-in-top" : "post-form-container"}>
                     <h4 className="pf-username">{username}</h4>
                     <form className="post-form">
-                        <input type="text" onChange={this.update('header')} placeholder="header" />
+                        <input type="text" className="post-header" onChange={this.update('header')} placeholder="header" />
                         <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" />
                         <input type="file" onChange={this.imageReader} />
                         <button onClick={this.dispatchPost} type="submit">Do it</button>
