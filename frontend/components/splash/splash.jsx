@@ -72,8 +72,8 @@ class Splash extends React.Component {
         formData.append('post[body]', body ? body : null);
         formData.append('post[user_id]', user_id ? user_id : null);
         formData.append('post[post_type]', "text");
-        formData.append('post[image]', imageFile);
-
+        if (imageFile) formData.append('post[image]', imageFile);
+        
         this.props.createPost(formData);
         this.setState({
             header: "",
