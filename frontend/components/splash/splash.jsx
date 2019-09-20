@@ -80,7 +80,8 @@ class Splash extends React.Component {
             header: "",
             body: "",
             imageUrl: "",
-            imageFile: null
+            imageFile: null,
+            buttonClicked: this.state.buttonClicked === false ? true : false
         });
     }
 
