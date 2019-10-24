@@ -5,6 +5,7 @@ class Api::PostsController < ApplicationController
     end
 
     def create
+        # here we go
         @post = Post.new(post_params)
         if @post.save
             @posts = Post.all
