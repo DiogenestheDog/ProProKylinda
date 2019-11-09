@@ -85,16 +85,7 @@ $main-color: #001935;
     }
 }
 
-.post-modal-container {
-    position: fixed;
-    background-color: white;
-    color: black;
-    width: 20em;
-    height: 300px;
-    display: none;
-}
-
-.modal-background {
+.post-modal-background {
     position: fixed;
     left: 0;
     right: 0;
@@ -104,12 +95,8 @@ $main-color: #001935;
     z-index: 10;
 }
 
-.post-modal-container-revealed {
-    position: fixed;
-    left: 50%;
-    top: 50%;
+.post-modal-container {
     background-color: white;
-    //width: 20em;
     width: 31.25em;
     max-width: 31.25em;
     height: 300px;
@@ -123,6 +110,13 @@ $main-color: #001935;
         display: block;
     }
 }
+
+ .modal-child {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ }
 
 .post-header {
     font-size: 2em;

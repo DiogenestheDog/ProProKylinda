@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class TextModal extends React.Component {
     constructor(props) {
@@ -7,7 +8,6 @@ class TextModal extends React.Component {
         this.state = {
             photoFile: null,
             photoUrl: "",
-            buttonClicked: false,
             postHeader: "",
             postBody: "",
             imageUrl: "",
@@ -54,7 +54,6 @@ class TextModal extends React.Component {
             body: "",
             imageUrl: "",
             imageFile: null,
-            buttonClicked: this.state.buttonClicked === false ? true : false
         });
     }
 
@@ -83,13 +82,13 @@ class TextModal extends React.Component {
     }
 
     render() {
+        const { username } = this.props.user
         return (
-            <div className={this.state.buttonClicked ? "post-modal-container-revealed" : "post-modal-container"}>
+            <div className="post-modal-container">
                 <h4 className="pf-username">{username}</h4>
                 <form className="post-form">
-                    <input type="text" className="post-header" onChange={this.update('header')} placeholder="header" />
-                    {/* <input type="textarea" onChange={this.update('body')} placeholder="Watcha thinking about?" /> */}
-                    <textarea className="post-body" type="text" onChange={this.update('body')} placeholder="Watcha thinking about?" />
+                    <input type="text" className="post-header" onChange={this.update('header')} placeholder="Title" />
+                    <textarea className="post-body" type="text" onChange={this.update('body')} placeholder="Your thoughts here" />
                     {this.state.imageUrl ? (<img src={this.state.imageUrl} className="image-preview" />) : ""}
                     <div className="file-input-wrapper">
                         <input id="file-input" type="file" onChange={this.imageReader} />
@@ -102,4 +101,12 @@ class TextModal extends React.Component {
     }
 }
 
-export default TextModal;
+const mapStateToProps = ({ session, entities: {users: users} }) => ({
+    user: users[session.id]
+});
+
+const mapDispatchToProps = ({
+    createPost: post => dispatchEvent(createPost(post))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextModal);

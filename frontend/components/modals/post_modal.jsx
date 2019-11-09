@@ -10,28 +10,26 @@ const PostModal = ({modal, closeModal}) => {
     let component;
     switch(modal) {
         case 'text':
-            component = TextModal;
+            component = <TextModal />;
             break;
         default:
             return null;
     }
     return (
         <div className="post-modal-background" onClick={closeModal}>
-            <div className="post-modal">
+            <div className="modal-child" onClick={e => e.stopPropagation()}>
                 { component }
             </div>
         </div>
     );
 }
 
-const mapStateToProps = state => ({
-    modal: state.ui.modal
-});
+const mapStateToProps = state => {
+    return {modal: state.ui.modal}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(closeModal())
 });
 
-connect(mapStateToProps, mapDispatchToProps)(Modal);
-
-export default PostModal;
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

@@ -4,11 +4,9 @@ const UIReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case OPEN_MODAL:
-            return Object.assign({}, state, action.modal);
+            return action.modal;
         case CLOSE_MODAL:
-            let newState = Object.assign({}, state);
-            newState.modal = null;
-            return newState;
+            return null;
         default:
             return state;
     }
