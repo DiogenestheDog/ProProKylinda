@@ -36,14 +36,65 @@ $session-form-width: 200px;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-right: 10px;
-    width: 250px;
+    width: 100%;
     margin-top: 8px;
     color: white;
     cursor: pointer;
+    text-align: center;
+}
+
+.demo-login {
+    background-color:grey;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    // width: 250px;
+    // margin-top: 8px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
 }
 
 .email-input {
     border-top: 1px solid lightgrey;
+}
+
+.flat-input {
+    border: none;
+    box-shadow: none;
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #8f8f8f
+}
+
+input {
+        box-shadow: none;
+        border: none;
+}
+
+.sliding-from-right {
+
+    animation: sfr 0.4s 1;
+    animation-direction: normal;
+    animation-timing-function: ease-in;
+    @keyframes sfr {
+        0% {
+            transform: scaleX(0);
+            transform-origin: 100% 100%;
+        }
+
+        100% {
+            transform: scaleX(1);
+            transform-origin: 100% 100%;
+        }
+    }
 }
 
 .title-text {

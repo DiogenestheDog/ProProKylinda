@@ -35,10 +35,41 @@ class PostModal extends React.Component {
         });
     }
 
+    boldify(str) {
+        return "woof";
+        // checks if line has has colon if does everything before it becomes bold
+        // everything before first colon
+        // only one per \n
+
+        // take input text and split on \n
+        // check for :
+        // if first :
+        // yes bold everything before and including :
+        // dont change anything
+        //
+    }
+
     update(type) {
-        return e => this.setState({
-            [type]: e.currentTarget.value
-        });
+        // run boldify if last char typed is :
+        // return e => this.setState({
+        //     [type]: e.currentTarget.value
+        // });
+
+        return e => {
+            if (type === "body") {
+                let lastChar = e.currentTarget.value[e.currentTarget.value.length - 1];
+                console.log(lastChar);
+                if (lastChar === ":") {
+                    this.setState({
+                        [type]: "honk"
+                    });
+                } else {
+                    this.setState({
+                        [type]: e.currentTarget.value
+                    });
+                }
+            }
+        }
     }
 
     render() {
@@ -47,8 +78,8 @@ class PostModal extends React.Component {
             <div className="post-modal-container">
                 <h4 className="pf-username">{username}</h4>
                 <form className="post-form">
-                    <input type="text" className="post-header" onChange={this.update('header')} placeholder="Title" />
-                    <textarea className="post-body" type="text" onChange={this.update('body')} placeholder="Michelle: hOnK" />
+                    <input type="text" className="post-header" value={this.state.header} onChange={this.update('header')} placeholder="Title" />
+                    <div contentEditable="true" className="post-body" type="text" value={this.state.body} onChange={this.update('body')} placeholder="Michelle: hOnK" />
                     <button onClick={this.dispatchPost} type="submit">Do it</button>
                 </form>
             </div>

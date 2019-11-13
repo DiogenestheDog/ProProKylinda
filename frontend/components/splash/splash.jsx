@@ -2,7 +2,6 @@ import React from 'react';
 
 import PostIndexContainer from '../posts/post_index_container';
 import PostModal from '../modals/post_modal';
-import { openModal } from '../../actions/modal_actions';
 
 class Splash extends React.Component {
     constructor(props) {
@@ -130,7 +129,7 @@ class Splash extends React.Component {
                 <div className="post-button text-post" onClick={() => openModal('text')} >
                     <i className="material-icons">text_fields</i>
                     <div>Text</div></div>
-                <div className="post-button photo-post" onClick={this.togglePostForm} >
+                <div className="post-button photo-post" onClick={() => openModal('photo')} >
                     <i className="material-icons">camera_alt</i>
                     <div>Photo</div></div>
                 <div className="post-button quote-post" onClick={this.togglePostForm} >

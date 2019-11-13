@@ -199,3 +199,14 @@ $main-color: #001935;
 .post-bar {
     color: lightgreen;
 }
+
+.drop-zone {
+    background-color: red;
+    height: 30px;
+    width: 30px;
+}
+
+.dragged-over {
+    background-color: green;
+    border: 1px solid black;
+}

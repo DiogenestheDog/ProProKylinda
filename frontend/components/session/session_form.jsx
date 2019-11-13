@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     handleSubmit(e) {
@@ -21,6 +22,21 @@ class SessionForm extends React.Component {
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
         this.setState({ 
+            email: "",
+            password: "",
+            username: ""
+        });
+    }
+
+    demoLogin(e) {
+        e.preventDefault();
+        const user = {
+            email: "demo",
+            password: "password",
+            username: "demo"
+        }
+        this.props.processForm(user);
+        this.setState({
             email: "",
             password: "",
             username: ""
@@ -86,6 +102,7 @@ class SessionForm extends React.Component {
                             className="flat-input email-input sliding-from-right"
                         />
                     </label>
+                    <div className="demo-login" onClick={this.demoLogin}>Demo Login</div>
                     {formType === 'signup' ? this.askForUsername() : "" }
                             <button onClick={this.buttonHandler} className="login flat-button" type="submit" >
                                 {formType === "login" ? "Log In" : "Sign Up"}

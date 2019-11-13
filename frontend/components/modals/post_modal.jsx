@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { closeModal } from '../../actions/modal_actions';
 import TextModal from './text_modal';
+import ChatModal from './chat_modal';
+import PhotoModal from './photo_modal';
 
 const PostModal = ({modal, closeModal}) => {
     if (!modal) return null;
@@ -12,6 +14,13 @@ const PostModal = ({modal, closeModal}) => {
         case 'text':
             component = <TextModal />;
             break;
+        case 'chat':
+            component = <ChatModal />;
+            break;
+        case 'photo':
+            component = <PhotoModal />;
+            break;
+            
         default:
             return null;
     }
@@ -22,7 +31,7 @@ const PostModal = ({modal, closeModal}) => {
             </div>
         </div>
     );
-}
+};
 
 const mapStateToProps = state => {
     return {modal: state.ui.modal}
