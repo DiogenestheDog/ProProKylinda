@@ -86,11 +86,11 @@ $main-color: #001935;
 }
 
 .post-modal-background {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 10;
 }

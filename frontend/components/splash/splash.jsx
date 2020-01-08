@@ -129,7 +129,7 @@ class Splash extends React.Component {
                 <div className="post-button text-post" onClick={() => openModal('text')} >
                     <i className="material-icons">text_fields</i>
                     <div>Text</div></div>
-                <div className="post-button photo-post" onClick={() => openModal('text')} >
+                <div className="post-button photo-post" onClick={() => openModal('photo')} >
                     <i className="material-icons">camera_alt</i>
                     <div>Photo</div></div>
                 <div className="post-button quote-post" onClick={this.togglePostForm} >
