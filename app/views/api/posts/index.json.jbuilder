@@ -5,6 +5,7 @@
         json.body post.body
         json.user_id post.user_id
         json.id post.id
+        json.postType post.post_type
         json.imageURL post.image.attached? ? url_for(post.image) : ""
     end
 end

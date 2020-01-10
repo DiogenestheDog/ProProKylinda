@@ -134,7 +134,17 @@ $main-color: #001935;
     font-size: 48px;
 }
 
+#video-upload-button {
+    display: block;
+    font-size: 48px;
+}
+
 .image-preview {
+    width: 100%;
+    height: auto;
+}
+
+.video-preview {
     width: 100%;
     height: auto;
 }

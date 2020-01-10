@@ -5,6 +5,8 @@ import { closeModal } from '../../actions/modal_actions';
 import TextModal from './text_modal';
 import ChatModal from './chat_modal';
 import PhotoModal from './photo_modal';
+import VideoModal from './video_modal';
+import AudioModal from './audio_modal';
 
 const PostModal = ({modal, closeModal}) => {
     if (!modal) return null;
@@ -20,7 +22,12 @@ const PostModal = ({modal, closeModal}) => {
         case 'photo':
             component = <PhotoModal />;
             break;
-            
+        case 'video':
+            component = <VideoModal />;
+            break;
+        case 'audio':
+            component = <AudioModal />;
+            break;
         default:
             return null;
     }

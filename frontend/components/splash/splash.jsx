@@ -42,12 +42,10 @@ class Splash extends React.Component {
 
     togglePostForm(e) {
         e.preventDefault();
-   //     let veracity = ;
         this.setState({
             buttonClicked: this.state.buttonClicked === false ? true : false
         });
         console.log(this.state.buttonClicked);
-       // console.log(veracity);
     }
 
     // updateAvatar(e) {
@@ -140,11 +138,11 @@ class Splash extends React.Component {
                     <i className="material-icons">mood</i>
                     <div>Chat</div>
                 </div>
-                <div className="post-button audio-post" onClick={this.togglePostForm} >
+                <div className="post-button audio-post" onClick={() => openModal('audio')} >
                     <i className="material-icons">music_note</i>
                     <div>Audio</div>
                 </div>
-                <div className="post-button video-post" onClick={this.togglePostForm} >
+                <div className="post-button video-post" onClick={() => openModal('video')} >
                     <i className="material-icons">videocam</i>
                     <div>Video</div>
                 </div>
