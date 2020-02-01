@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createPost } from '../../actions/post_actions';
 
 class AudioModal extends React.Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class AudioModal extends React.Component {
                 <h4 className="pf-username">{username}</h4>
                 <form className="post-form">
                     <input type="text" className="post-header" onChange={this.update('header')} placeholder="Title" />
-                    {this.state.audioURL ? (<figure><figcaption>{this.state.audioURL}</figcaption><audio controls><source src={this.state.audioURL} type="audio/ogg"></source></audio></figure>) : ""}
+                    {this.state.audioURL ? (<audio controls><source src={this.state.audioURL} type="audio/ogg"></source></audio>) : ""}
                     <div className="file-input-wrapper">
                         <input id="file-input" type="file" onChange={this.audioReader} />
                     </div>
@@ -85,7 +86,7 @@ const mapStateToProps = ({ session, entities: { users: users } }) => ({
 });
 
 const mapDispatchToProps = ({
-    createPost: post => dispatchEvent(createPost(post))
+    createPost: post => dispatch(createPost(post))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioModal);

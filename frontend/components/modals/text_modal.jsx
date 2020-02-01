@@ -105,7 +105,7 @@ const mapStateToProps = ({ session, entities: {users: users} }) => ({
 });
 
 const mapDispatchToProps = ({
-    createPost: post => dispatchEvent(createPost(post))
+    createPost: post => dispatch(createPost(post))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextModal);
