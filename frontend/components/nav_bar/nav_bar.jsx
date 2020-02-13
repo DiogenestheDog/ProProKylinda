@@ -41,7 +41,10 @@ class NavBar extends React.Component {
             <div className="left-nav">
                 <h1 className="rainbow-letter">[ p ]</h1>
             </div>
-            <div className="right-nav"> 
+            <div className="right-nav">
+                <Link to="/profile" >
+                    <i className="material-icons" id="profile-button">perm_identity</i>
+                </ Link>
                 {this.navButton()}
             </div>
         </nav>);
