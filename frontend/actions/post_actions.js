@@ -40,6 +40,11 @@ export const getPost = id => dispatch => {
         );
 };
 
+export const getAllUserPosts = user => dispatch => {
+    return PostUtils.fetchAllUserPosts()
+        .then( posts => dispatch)
+}
+
 export const getAllPosts = () => dispatch => {
     return PostUtils.fetchAllPosts()
         .then( posts => dispatch(receiveAllPosts(posts)),
