@@ -55,6 +55,6 @@ export const getAllPosts = () => dispatch => {
 export const deletePost = id => dispatch => {
     return PostUtils.deletePost(id)
         .then( post => dispatch(removePost(id)),
-            errors => dispatch(receiveErrors(errorss))
+            errors => dispatch(receiveErrors(errors))
         );
 };
