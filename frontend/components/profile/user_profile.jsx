@@ -1,11 +1,10 @@
 import React from 'react';
-import PostIndexContainer from '../posts/post_index_container';
+import UserIndexContainer from '../posts/user_index_container';
 
 class UserProfile extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log(this.props);
     }
 
     componentDidMount() {
@@ -14,9 +13,12 @@ class UserProfile extends React.Component {
     }
 
     render() {
-        console.log(this.props);
-        return (<div className="grid-feed">
-            <PostIndexContainer />
+        
+        return (<div>
+            <h1 className="user-index">{this.props.user.username}</h1>
+            <div className="grid-feed">
+                <UserIndexContainer />
+            </div>
         </div>);
     }
 }

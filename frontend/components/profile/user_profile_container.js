@@ -6,7 +6,7 @@ import { getAllPosts } from '../../actions/post_actions';
 const mapStateToProps = ({ session, entities: { users: users } }) => ({
     user: users[session.id],
     id: session.id
-});
+});     
 
 const mapDispatchToProps = dispatch => ({
     getAllPosts: () => dispatch(getAllPosts()),
