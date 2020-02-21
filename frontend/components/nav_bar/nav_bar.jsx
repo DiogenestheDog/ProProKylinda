@@ -32,17 +32,17 @@ class NavBar extends React.Component {
             </Link>
         );
 
-        return this.props.loggedIn ? logout : this.props.path === "/signup" ? login : signup;
+        return this.props.sessionId != undefined ? logout : this.props.path === "/signup" ? login : signup;
     }
 
     render() {
-        const { loggedIn } = this.props;
-        return (<nav className={loggedIn ? "logged-in top-nav" : "top-nav"}>
+        const { sessionId } = this.props;
+        return (<nav className={sessionId != undefined ? "logged-in top-nav" : "top-nav"}>
             <div className="left-nav">
                 <h1 className="rainbow-letter">[ p ]</h1>
             </div>
             <div className="right-nav">
-                <Link to="/profile" >
+                <Link to={`/profile/${sessionId}`} >
                     <i className="material-icons" id="profile-button">perm_identity</i>
                 </ Link>
                 {this.navButton()}
