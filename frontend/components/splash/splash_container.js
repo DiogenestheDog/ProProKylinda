@@ -9,7 +9,6 @@ import { openModal } from '../../actions/modal_actions';
 const mapStateToProps = ({ session, entities: { users: users }, ui }) => ({
     modal: ui.modal,
     user: users[session.id],
-    loggedIn: Boolean(session.id),
     id: session.id
 });
 

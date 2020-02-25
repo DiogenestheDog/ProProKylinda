@@ -2,13 +2,14 @@
 #
 # Table name: posts
 #
-#  id         :bigint           not null, primary key
-#  header     :string
-#  body       :text
-#  user_id    :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  post_type  :string
+#  id          :bigint           not null, primary key
+#  header      :string
+#  body        :text
+#  user_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  post_type   :string
+#  total_likes :integer          default(0)
 #
 
 class Post < ApplicationRecord
@@ -19,4 +20,5 @@ class Post < ApplicationRecord
     has_one_attached :image
 
     belongs_to :user
+    has_many :likes
 end

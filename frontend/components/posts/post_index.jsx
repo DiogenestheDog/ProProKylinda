@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PostItem from './post_item';
-import PostModal from '../modals/post_modal'
+
 class PostIndex extends React.Component {
     constructor(props) {
         super(props);

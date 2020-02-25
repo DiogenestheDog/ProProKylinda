@@ -6,12 +6,11 @@ import NavBar from './nav_bar';
 
 const mapStateToProps = (state, ownProps) => {
     return ({
-    loggedIn: Boolean(state.session.id),
+    sessionId: state.session.id,
     path: ownProps.location.pathname
     });}
 
 const mapDispatchToProps = dispatch => ({
-    signup: (user) => dispatch(signup(user)),
     logout: () => dispatch(logout())
 });
 

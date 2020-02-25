@@ -1,8 +1,14 @@
 class Api::PostsController < ApplicationController
 
     def index
-        @posts = Post.all
+        if params.has_key?(:user_id)
+            @posts = Post.where(user_id: params[:user_id])
+        else
+            @posts = Post.all
+        end
     end
+
+    # why do we return all posts?
 
     def create
         # here we go
@@ -16,6 +22,16 @@ class Api::PostsController < ApplicationController
     end
 
     def show
+        # if :user
+        #     @posts_by_user = Post.where(user_id: user)
+
+        #     if @posts_by_user
+        #         render "api/posts/show"
+        #     else
+        #         render json: ["user or posts not found"], status: 422
+        #     end
+        # else
+
         @post = Post.find(params[:id])
         if @post
             render "api/posts/show"
