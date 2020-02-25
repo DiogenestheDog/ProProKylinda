@@ -15,10 +15,10 @@ export const fetchAllPosts = () => {
     });
 };
 
-export const fetchAllUserPosts = (user) => {
+export const fetchAllUserPosts = (userId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/posts/${user}`
+        url: `/api/users/${userId}/posts`
     });
 };
 

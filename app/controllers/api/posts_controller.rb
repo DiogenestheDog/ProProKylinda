@@ -1,7 +1,11 @@
 class Api::PostsController < ApplicationController
 
     def index
-        @posts = Post.all
+        if params.has_key?(:user_id)
+            @posts = Post.where(user_id: params[:user_id])
+        else
+            @posts = Post.all
+        end
     end
 
     # why do we return all posts?

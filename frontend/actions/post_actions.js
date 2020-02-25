@@ -5,7 +5,6 @@ export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_POST_ERRORS = "RECEIVE_ERRORS";
 
-
 export const receivePost = post => ({
     type: RECEIVE_POST,
     post
@@ -40,10 +39,12 @@ export const getPost = id => dispatch => {
         );
 };
 
-export const getAllUserPosts = user => dispatch => {
-    return PostUtils.fetchAllUserPosts()
-        .then( posts => dispatch)
-}
+export const getAllUserPosts = userId => dispatch => {
+    return PostUtils.fetchAllUserPosts(userId)
+        .then( posts => dispatch(receiveAllPosts(posts)),
+            errors => dispatch(receiveErrors(errors))
+        );
+};
 
 export const getAllPosts = () => dispatch => {
     return PostUtils.fetchAllPosts()
