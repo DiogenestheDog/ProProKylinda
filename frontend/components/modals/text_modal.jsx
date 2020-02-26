@@ -100,6 +100,7 @@ class TextModal extends React.Component {
                     </div>
                     <i className="material-icons" id="photo-upload-button" onClick={this.chooseFile} >photo_camera</i>
                     <button onClick={this.dispatchPost} type="submit">Do it</button>
+                    <i class="material-icons like_button">favorite_border</i>
                 </form>
             </div>
         );

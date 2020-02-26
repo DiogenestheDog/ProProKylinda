@@ -140,7 +140,7 @@ const mapStateToProps = ({ session, entities: { users: users } }) => ({
     user: users[session.id]
 });
 
-const mapDispatchToProps = ({
+const mapDispatchToProps = dispatch => ({
     createPost: post => dispatch(createPost(post))
 });
 
