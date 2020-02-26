@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { createPost } from '../../actions/post_actions';
+
 class TextModal extends React.Component {
     constructor(props) {
         super(props);
@@ -49,11 +51,15 @@ class TextModal extends React.Component {
         if (imageFile) formData.append('post[image]', imageFile);
 
         this.props.createPost(formData);
+        
+        
         this.setState({
-            header: "",
-            body: "",
+            photoFile: null,
+            photoUrl: "",
+            postHeader: "",
+            postBody: "",
             imageUrl: "",
-            imageFile: null,
+            imageFile: null
         });
     }
 
@@ -104,7 +110,7 @@ const mapStateToProps = ({ session, entities: {users: users} }) => ({
     user: users[session.id]
 });
 
-const mapDispatchToProps = ({
+const mapDispatchToProps = dispatch => ({
     createPost: post => dispatch(createPost(post))
 });
 

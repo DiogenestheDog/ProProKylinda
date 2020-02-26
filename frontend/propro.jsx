@@ -31,17 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
  
-    window.signup = APIUtils.signup;
-    window.login = APIUtils.login;
-    window.logout = APIUtils.logout
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.fetchPost = PostUtils.fetchPost;
-    window.getPost = getPost;
-    window.createPost = createPost;
-    window.getAllPosts = getAllPosts;
-    window.getAllUsers = getAllUsers;
-    window.fetchAllUsers = UserUtils.fetchAllUsers
+    // window.signup = APIUtils.signup;
+    // window.login = APIUtils.login;
+    // window.logout = APIUtils.logout
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
+    // window.fetchPost = PostUtils.fetchPost;
+    // window.getPost = getPost;
+    // // window.createPost = createPost;
+    // window.getAllPosts = getAllPosts;
+    // window.getAllUsers = getAllUsers;
+    // window.fetchAllUsers = UserUtils.fetchAllUsers
 
     ReactDOM.render(<Root store={store} />, root);
 });

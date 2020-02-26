@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Splash from './splash';
 import { logout } from '../../actions/session_actions';
 import { getAllUsers } from '../../actions/user_actions';
-import { getAllPosts, createPost } from '../../actions/post_actions';
+import { getAllPosts } from '../../actions/post_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({ session, entities: { users: users }, ui }) => ({
@@ -15,8 +15,7 @@ const mapStateToProps = ({ session, entities: { users: users }, ui }) => ({
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(openModal(modal)),
     logout: () => dispatch(logout()),
-    changeUser: user => dispatch(changeUser(user)),
-    createPost: post => dispatch(createPost(post)),
+    // changeUser: user => dispatch(changeUser(user)),
     getAllPosts: () => dispatch(getAllPosts()),
     getAllUsers: () => dispatch(getAllUsers())
 });

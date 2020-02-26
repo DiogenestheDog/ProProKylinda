@@ -12,9 +12,8 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getAllUsers();
+        //this.props.getAllUsers();
         this.props.getAllUserPosts(this.props.id);
-        console.log(this.props.id)
        // this.props.getAllPosts();
     }
 

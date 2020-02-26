@@ -3,8 +3,10 @@ import { RECEIVE_POST, RECEIVE_ALL_POSTS, REMOVE_POST } from '../actions/post_ac
 const postsReducer = (state = {}, action) => {
     Object.freeze(state);
 
-    switch(action.type) {
+    console.log(Object.keys(action));
 
+    switch(action.type) {
+        
         case RECEIVE_POST:
             return Object.assign({}, state, action.post );
 

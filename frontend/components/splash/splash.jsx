@@ -19,7 +19,7 @@ class Splash extends React.Component {
         this.previewNewAvatar = this.previewNewAvatar.bind(this);
        // this.updateAvatar = this.updateAvatar.bind(this);
         this.togglePostForm = this.togglePostForm.bind(this);
-        this.dispatchPost = this.dispatchPost.bind(this);
+        //this.dispatchPost = this.dispatchPost.bind(this);
         this.imageReader = this.imageReader.bind(this);
         this.chooseFile = this.chooseFile.bind(this);
     }
@@ -60,28 +60,28 @@ class Splash extends React.Component {
 
     // }
 
-    dispatchPost(e) {
-        e.preventDefault();
+    // dispatchPost(e) {
+    //     e.preventDefault();
         
-        const { header, body, imageFile } = this.state;
-        const user_id = this.props.user.id;
-        let formData = new FormData();
+    //     const { header, body, imageFile } = this.state;
+    //     const user_id = this.props.user.id;
+    //     let formData = new FormData();
 
-        formData.append('post[header]', header ? header : null);
-        formData.append('post[body]', body ? body : null);
-        formData.append('post[user_id]', user_id ? user_id : null);
-        formData.append('post[post_type]', "text");
-        if (imageFile) formData.append('post[image]', imageFile);
+    //     formData.append('post[header]', header ? header : null);
+    //     formData.append('post[body]', body ? body : null);
+    //     formData.append('post[user_id]', user_id ? user_id : null);
+    //     formData.append('post[post_type]', "text");
+    //     if (imageFile) formData.append('post[image]', imageFile);
         
-        this.props.createPost(formData);
-        this.setState({
-            header: "",
-            body: "",
-            imageUrl: "",
-            imageFile: null,
-            buttonClicked: this.state.buttonClicked === false ? true : false
-        });
-    }
+    //     this.props.createPost(formData);
+    //     this.setState({
+    //         header: "",
+    //         body: "",
+    //         imageUrl: "",
+    //         imageFile: null,
+    //         buttonClicked: this.state.buttonClicked === false ? true : false
+    //     });
+    // }
 
 
     chooseFile(e) {
