@@ -8,7 +8,7 @@ class AudioModal extends React.Component {
         super(props);
 
         this.state = {
-            postHeader: "",
+            header: "",
             audioURL: "",
             audioFile: "",
         };
@@ -23,7 +23,6 @@ class AudioModal extends React.Component {
         e.preventDefault();
 
         if (this.checkFields()) {
-            console.log(this.state.audioURL);
             const { header, audioFile } = this.state;
             const user_id = this.props.user.id;
             let formData = new FormData();

@@ -11,7 +11,7 @@ class VideoModal extends React.Component {
         this.state = {
             videoFile: null,
             videoURL: "",
-            postHeader: "",
+            header: "",
             draggedOver: false
         }
         this.dispatchPost = this.dispatchPost.bind(this);

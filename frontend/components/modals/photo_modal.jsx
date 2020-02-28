@@ -10,7 +10,7 @@ class PhotoModal extends React.Component {
 
         this.state = {
             draggedOver: false,
-            postHeader: "",
+            header: "",
             imageURL: "",
             imageFile: null
         };
