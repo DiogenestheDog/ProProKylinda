@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { createPost } from '../../actions/post_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 class VideoModal extends React.Component {
     constructor(props) {
@@ -19,27 +20,32 @@ class VideoModal extends React.Component {
         this.dragHighlight = this.dragHighlight.bind(this);
         this.dragUnhighlight = this.dragUnhighlight.bind(this);
         this.handleDrop = this.handleDrop.bind(this);
+        this.checkFields = this.checkFields.bind(this);
     }
 
     dispatchPost(e) {
         e.preventDefault();
 
-        const { header, body, videoFile } = this.state;
-        const user_id = this.props.user.id;
-        let formData = new FormData();
+        if (this.checkFields()) {
+            const { header, videoFile } = this.state;
+            const user_id = this.props.user.id;
+            let formData = new FormData();
 
-        formData.append('post[header]', header ? header : null);
-        formData.append('post[user_id]', user_id ? user_id : null);
-        formData.append('post[post_type]', "video");
-        // all blobs-types are called image for now
-        if (videoFile) formData.append('post[image]', videoFile);
+            formData.append('post[header]', header ? header : null);
+            formData.append('post[user_id]', user_id ? user_id : null);
+            formData.append('post[post_type]', "video");
+            // all blobs-types are called image for now
+            if (videoFile) formData.append('post[image]', videoFile);
 
-        this.props.createPost(formData);
-        this.setState({
-            header: "",
-            videoURL: "",
-            videoFile: null,
-        });
+            this.props.createPost(formData)
+                .then(this.props.closeModal());
+
+            this.setState({
+                header: "",
+                videoURL: "",
+                videoFile: null,
+            });
+        } else { window.alert("gotta have a title and video"); }
     }
 
     chooseFile(e) {
@@ -62,6 +68,13 @@ class VideoModal extends React.Component {
         return e => this.setState({
             [type]: e.currentTarget.value
         });
+    }
+
+    checkFields() {
+        const { header, videoFile, videoURL } = this.state;
+        if (header != false && videoURL != false && videoFile != null) {
+            return true
+        } else { return false; }
     }
 
     // adapted from https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
@@ -124,7 +137,8 @@ const mapStateToProps = ({ session, entities: { users: users } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createPost: post => dispatch(createPost(post))
+    createPost: post => dispatch(createPost(post)),
+    closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoModal);

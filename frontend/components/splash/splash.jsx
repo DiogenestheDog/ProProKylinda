@@ -45,7 +45,6 @@ class Splash extends React.Component {
         this.setState({
             buttonClicked: this.state.buttonClicked === false ? true : false
         });
-        console.log(this.state.buttonClicked);
     }
 
     // updateAvatar(e) {
@@ -87,7 +86,7 @@ class Splash extends React.Component {
     chooseFile(e) {
         e.preventDefault();
         $("#file-input").click();
-        console.log("honk");
+
     }
  
     imageReader(e) {

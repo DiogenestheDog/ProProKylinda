@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/post_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 class AudioModal extends React.Component {
     constructor(props) {
@@ -15,26 +16,32 @@ class AudioModal extends React.Component {
         this.dispatchPost = this.dispatchPost.bind(this);
         this.audioReader = this.audioReader.bind(this);
         this.chooseFile = this.chooseFile.bind(this);
+        this.checkFields = this.checkFields.bind(this);
     }
 
     dispatchPost(e) {
         e.preventDefault();
 
-        const { header, body, audioFile } = this.state;
-        const user_id = this.props.user.id;
-        let formData = new FormData();
+        if (this.checkFields()) {
+            console.log(this.state.audioURL);
+            const { header, audioFile } = this.state;
+            const user_id = this.props.user.id;
+            let formData = new FormData();
 
-        formData.append('post[header]', header ? header : null);
-        formData.append('post[user_id]', user_id ? user_id : null);
-        formData.append('post[post_type]', "audio");
-        if (audioFile) formData.append('post[image]', audioFile);
+            formData.append('post[header]', header ? header : null);
+            formData.append('post[user_id]', user_id ? user_id : null);
+            formData.append('post[post_type]', "audio");
+            if (audioFile) formData.append('post[image]', audioFile);
 
-        this.props.createPost(formData);
-        this.setState({
-            header: "",
-            audioURL: "",
-            audioFile: null,
-        });
+            this.props.createPost(formData)
+                .then(this.props.closeModal());
+
+            this.setState({
+                header: "",
+                audioURL: "",
+                audioFile: null,
+            });
+        } else { window.alert("fill everything out"); }
     }
 
     chooseFile(e) {
@@ -61,6 +68,12 @@ class AudioModal extends React.Component {
         });
     }
 
+    checkFields() {
+        const { header, audioFile, audioURL } = this.state;
+        if (header != false && audioURL != false && audioFile != null) {
+            return true
+        } else { return false; }
+    }
 
     render() {
         const { username } = this.props.user
@@ -86,7 +99,8 @@ const mapStateToProps = ({ session, entities: { users: users } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createPost: post => dispatch(createPost(post))
+    createPost: post => dispatch(createPost(post)),
+    closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioModal);

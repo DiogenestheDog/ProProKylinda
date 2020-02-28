@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { createPost } from '../../actions/post_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 class PhotoModal extends React.Component {
     constructor(props) {
@@ -9,10 +10,8 @@ class PhotoModal extends React.Component {
 
         this.state = {
             draggedOver: false,
-            photoFile: null,
-            photoUrl: "",
             postHeader: "",
-            imageUrl: "",
+            imageURL: "",
             imageFile: null
         };
         this.previewNewAvatar = this.previewNewAvatar.bind(this);
@@ -22,6 +21,7 @@ class PhotoModal extends React.Component {
         this.dragHighlight = this.dragHighlight.bind(this);
         this.dragUnhighlight = this.dragUnhighlight.bind(this);
         this.handleDrop = this.handleDrop.bind(this);
+        this.checkFields = this.checkFields.bind(this);
     }
 
     previewNewAvatar(e) {
@@ -30,34 +30,37 @@ class PhotoModal extends React.Component {
         reader.onloadend = () => {
             return this.setState({
                 photoFile: file,
-                photoUrl: reader.result
+                photoURL: reader.result
             });
         };
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            this.setState({ photoFile: null, photoUrl: "" });
+            this.setState({ photoFile: null, photoURL: "" });
         }
     }
 
     dispatchPost(e) {
         e.preventDefault();
 
-        const { header, body, imageFile } = this.state;
-        const user_id = this.props.user.id;
-        let formData = new FormData();
+        if (this.checkFields()) {
+            const { header, imageFile } = this.state;
+            const user_id = this.props.user.id;
+            let formData = new FormData();
 
-        formData.append('post[header]', header ? header : null);
-        formData.append('post[user_id]', user_id ? user_id : null);
-        formData.append('post[post_type]', "photo");
-        if (imageFile) formData.append('post[image]', imageFile);
+            formData.append('post[header]', header ? header : null);
+            formData.append('post[user_id]', user_id ? user_id : null);
+            formData.append('post[post_type]', "photo");
+            if (imageFile) formData.append('post[image]', imageFile);
 
-        this.props.createPost(formData);
-        this.setState({
-            header: "",
-            imageUrl: "",
-            imageFile: null,
-        });
+            this.props.createPost(formData)
+                .then(this.props.closeModal());
+            this.setState({
+                header: "",
+                imageURL: "",
+                imageFile: null,
+            });
+        } else { window.alert("what are you doing?"); }
     }
 
     chooseFile(e) {
@@ -68,12 +71,12 @@ class PhotoModal extends React.Component {
     imageReader(e) {
         const reader = new FileReader
         const file = e.currentTarget.files[0];
-        reader.onloadend = () => this.setState({ imageUrl: reader.result, imageFile: file });
+        reader.onloadend = () => this.setState({ imageURL: reader.result, imageFile: file });
 
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            this.setState({ imageUrl: "", imageFile: null });
+            this.setState({ imageURL: "", imageFile: null });
         }
     }
 
@@ -81,6 +84,13 @@ class PhotoModal extends React.Component {
         return e => this.setState({
             [type]: e.currentTarget.value
         });
+    }
+
+    checkFields() {
+        const { header, imageFile, imageURL } = this.state;
+        if (header != false && imageURL != false && imageFile != null) {
+            return true
+        } else { return false; }
     }
 
     // adapted from https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
@@ -107,11 +117,11 @@ class PhotoModal extends React.Component {
         this.setState({ draggedOver: false });
         const reader = new FileReader;
         const image = e.dataTransfer.files[0];
-        reader.onloadend = () => this.setState({ imageUrl: reader.result, imageFile: image });
+        reader.onloadend = () => this.setState({ imageURL: reader.result, imageFile: image });
         if (image) {
             reader.readAsDataURL(image);
         } else {
-            this.setState({ imageUrl: "", imageFile: null });
+            this.setState({ imageURL: "", imageFile: null });
         }
     }
 
@@ -126,7 +136,7 @@ class PhotoModal extends React.Component {
                     <div className={draggedOver ? "drop-zone dragged-over" : "drop-zone"} 
                         onDragOver={this.dragHighlight} onDragEnter={this.dragHighlight}
                         onDragLeave={this.dragUnhighlight} onDrop={this.handleDrop}></div>
-                    {this.state.imageUrl ? (<img src={this.state.imageUrl} className="image-preview" />) : ""}
+                    {this.state.imageURL ? (<img src={this.state.imageURL} className="image-preview" />) : ""}
                     <div className="file-input-wrapper">
                         <input id="file-input" type="file" onChange={this.imageReader} />
                     </div>
@@ -143,7 +153,8 @@ const mapStateToProps = ({ session, entities: { users: users } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createPost: post => dispatch(createPost(post))
+    createPost: post => dispatch(createPost(post)),
+    closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoModal);
