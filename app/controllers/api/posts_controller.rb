@@ -14,8 +14,9 @@ class Api::PostsController < ApplicationController
         # here we go
         @post = Post.new(post_params)
         if @post.save
-            @posts = Post.all
-            render "api/posts/index"
+            # @posts = Post.all
+            # render "api/posts/index"
+            render "api/posts/show"
         else
             render json: @post.errors.full_messages, status: 422
         end

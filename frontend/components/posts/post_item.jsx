@@ -11,9 +11,9 @@ class PostItem extends React.Component {
     }
 
     render() {
-        const { postType } = this.props.post
+        const { post_type } = this.props.post
         let component;
-        switch (postType) {
+        switch (post_type) {
             case "audio":
                 component = <AudioPost post={this.props.post} user={this.props.user} />;
                 break;
